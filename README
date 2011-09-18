@@ -1,0 +1,56 @@
+dwm - dynamic window manager
+============================
+dwm ist ein extrem schneller, kleiner und dynamischer Fenstermanager für X.
+
+
+Anforderungen
+-------------
+Um dwm bauen zu können, benötigst du die Xlib-Headerdateien.
+
+
+Installation
+------------
+Bearbeite config.mk um deine lokalen Einstellungen anzupassen (dwm wird per Voreinstellung in den /usr/local Namensbereich installiert).
+
+Gib danach den nachfolgenden Befehl ein um dwm zu bauen und zu installieren (nötigenfalls als root):
+
+    make clean install
+
+Wenn du das vorgegebene blaugraue Farbschema verwendest, wird dazu geraten, ebenfalls die blaugraue Datei zu installieren die mit dem dextra Paket geliefert wird.
+
+
+dwm laufen lassen
+-----------------
+Füge die folgende Zeile deiner .xinitrc Datei hinzu, um dwm unter Verwendung von startx zu starten:
+
+    exec dwm
+
+Um dwm mit einem spezifischen Bildschirm zu verbinden, versichere dich das die DISPLAY-Umgebungsvariable korrekt gesetzt ist, wie z.B.:
+
+    DISPLAY=foo.bar:1 exec dwm
+
+(Dies wird dwm auf Bildschirm :1 auf dem Host foo.bar starten.)
+
+Um die Status-Informationen auf der Statuszeile darzustellen, kannst du etwas in der folgenden Art zu deiner .xinitrc Datei hinzufügen:
+
+    while xsetroot -name "`date` `uptime | sed 's/.*,//'`"
+    do
+    	sleep 20
+    done &
+    exec dwm
+
+
+Konfiguration
+-------------
+Die Konfiguration von dwm wird angepasst, durch Erstellung einer angepassten config.h und der (Re-)Compilation des Quellcodes.
+
+
+Anpassungen
+-----------
+Diese Version von dwm verfügt über die folgenden Patches:
+- pertag
+- bottom stack
+- monocle count
+- nextprev
+- systray
+
